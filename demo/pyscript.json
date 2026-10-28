@@ -1,0 +1,8 @@
+{
+  "interpreter": "https://cdn.jsdelivr.net/pyodide/v0.29.0/full/pyodide.mjs",
+  "files": {
+    "../map_dashboard.py": "./map_dashboard.py",
+    "./mocks.py": "./mocks.py",
+    "../tests/browser_checks.py": "./browser_checks.py"
+  }
+}

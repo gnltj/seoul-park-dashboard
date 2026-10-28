@@ -1,0 +1,28 @@
+test_blank_bounds_pass_unchanged (test_map_dashboard.DashboardTests.test_blank_bounds_pass_unchanged) ... ok
+test_constructor_only_stores_dependency_and_state (test_map_dashboard.DashboardTests.test_constructor_only_stores_dependency_and_state) ... ok
+test_delegates_same_filtered_list_in_correct_order (test_map_dashboard.DashboardTests.test_delegates_same_filtered_list_in_correct_order) ... ok
+test_empty_results_update_all_views (test_map_dashboard.DashboardTests.test_empty_results_update_all_views) ... ok
+test_header_switch_and_toggle (test_map_dashboard.DashboardTests.test_header_switch_and_toggle) ... ok
+test_invalid_inputs_retain_previous_result (test_map_dashboard.DashboardTests.test_invalid_inputs_retain_previous_result) ... ok
+test_inverted_bounds_and_correction (test_map_dashboard.DashboardTests.test_inverted_bounds_and_correction) ... ok
+test_min_only_and_max_only (test_map_dashboard.DashboardTests.test_min_only_and_max_only) ... ok
+test_missing_and_zero_display_values (test_map_dashboard.DashboardTests.test_missing_and_zero_display_values) ... ok
+test_missing_html_ids_fail_before_leaflet_creation (test_map_dashboard.DashboardTests.test_missing_html_ids_fail_before_leaflet_creation) ... ok
+test_missing_marker_does_not_move_map (test_map_dashboard.DashboardTests.test_missing_marker_does_not_move_map) ... ok
+test_native_bad_input_does_not_become_blank (test_map_dashboard.DashboardTests.test_native_bad_input_does_not_become_blank) ... ok
+test_no_event_is_harmless (test_map_dashboard.DashboardTests.test_no_event_is_harmless) ... ok
+test_numeric_bounds_and_district (test_map_dashboard.DashboardTests.test_numeric_bounds_and_district) ... ok
+test_refresh_requires_start (test_map_dashboard.DashboardTests.test_refresh_requires_start) ... ok
+test_render_then_count_update_order (test_map_dashboard.DashboardTests.test_render_then_count_update_order) ... ok
+test_repeated_row_clicks_reuse_marker (test_map_dashboard.DashboardTests.test_repeated_row_clicks_reuse_marker) ... ok
+test_sort_state_survives_filter_changes (test_map_dashboard.DashboardTests.test_sort_state_survives_filter_changes) ... ok
+test_start_is_idempotent (test_map_dashboard.DashboardTests.test_start_is_idempotent) ... ok
+test_unknown_header_is_ignored (test_map_dashboard.DashboardTests.test_unknown_header_is_ignored) ... ok
+test_uses_manager_output_without_sorting_or_filtering_itself (test_map_dashboard.DashboardTests.test_uses_manager_output_without_sorting_or_filtering_itself) ... ok
+test_valid_and_missing_coordinates (test_map_dashboard.DashboardTests.test_valid_and_missing_coordinates) ... ok
+test_zero_is_not_blank (test_map_dashboard.DashboardTests.test_zero_is_not_blank) ... ok
+
+----------------------------------------------------------------------
+Ran 23 tests in 0.015s
+
+OK
