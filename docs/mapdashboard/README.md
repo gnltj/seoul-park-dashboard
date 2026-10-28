@@ -63,7 +63,7 @@ docs/mapdashboard/
   test-results.md                     실제 검증 결과와 미검증 범위
   completion-report.md                독립 개발 완료 당시 보고서
   unit-tests.txt / browser-tests.txt   검증 출력 기록
-  MapDashboard_팀원_테스트_인수인계.txt   팀원용 기능 확인 및 인수인계
+  개발요약 10-28.txt                     팀원용 기능 확인 및 인수인계
 ```
 
 ## 자동 테스트
@@ -84,6 +84,6 @@ PyScript 2026.7.3, Pyodide 0.29.0, Leaflet 1.9.4로 고정했습니다. Pyodide�
 
 MapDashboard에는 공원 필터링·정렬 알고리즘이 없습니다. 생성자로 전달받은 Manager의 결과 순서를 그대로 사용합니다. 상태는 클래스 내부에서 관리하고, 이벤트는 고정된 부모 요소에 한 번만 연결하며, 마커는 전용 레이어를 비우고 다시 만듭니다.
 
-팀 연결 방법과 숫자/빈값 전달 규칙은 [integration.md](integration.md), 테스트 결과는 [test-results.md](test-results.md), 팀원용 안내는 [인수인계서](MapDashboard_팀원_테스트_인수인계.txt)를 참고하세요. PDF와 원본 엑셀은 개발 작업에 첨부되지 않아 요청문에 적힌 인터페이스를 기준으로 구현했습니다.
+팀 연결 방법과 숫자/빈값 전달 규칙은 [integration.md](integration.md), 테스트 결과는 [test-results.md](test-results.md), 팀원용 안내는 [개발요약 10-28.txt](<개발요약 10-28.txt>)를 참고하세요. PDF와 원본 엑셀은 개발 작업에 첨부되지 않아 요청문에 적힌 인터페이스를 기준으로 구현했습니다.
 
 팀 통합 시 실제 [map_dashboard.py](../../map_dashboard.py)를 연결합니다. 데모 HTML로 팀의 실제 index.html을 덮어쓰지 마세요. 이 브랜치 공유 작업에는 main 병합, GitHub Pages 설정 변경, 최종 배포가 포함되지 않습니다.
