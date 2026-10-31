@@ -90,6 +90,7 @@ input:focus-visible, select:focus-visible { outline: 2px solid var(--green-700);
 #park-list th, #park-list td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--line); }
 #park-list thead th { position: sticky; top: 0; z-index: 1; background: var(--green-100); white-space: nowrap; }
 #park-list th:nth-child(3), #park-list td:nth-child(3) { text-align: right; font-variant-numeric: tabular-nums; }
+#park-list td:nth-child(3) { max-width: 140px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 #park-list td:nth-child(5) { max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 #park-list td[colspan] { padding: 24px 12px; text-align: center; color: var(--muted); }
 
