@@ -1,0 +1,11 @@
+interpreter = "https://cdn.jsdelivr.net/pyodide/v0.29.0/full/pyodide.mjs"
+
+[files]
+"./parks.csv" = "./parks.csv"
+"./park.py" = "./park.py"
+"./data_loader.py" = "./data_loader.py"
+"./park_manager.py" = "./park_manager.py"
+"./filter_panel.py" = "./filter_panel.py"
+"./map_view.py" = "./map_view.py"
+"./park_list_view.py" = "./park_list_view.py"
+"./dashboard.py" = "./dashboard.py"

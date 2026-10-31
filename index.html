@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>내 서울 공원 길라잡이</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <link rel="stylesheet" href="https://pyscript.net/releases/2026.7.3/core.css">
+  <script type="module" src="https://pyscript.net/releases/2026.7.3/core.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>서울시 주요 공원 대시보드</h1>
+    <p>데이터: 서울시 주요 공원현황 (133곳) · Python + PyScript</p>
+  </header>
+
+  <main>
+    <section class="filters" aria-label="공원 필터">
+      <label class="field">자치구
+        <select id="district"></select>
+      </label>
+      <div class="field area-filter">
+        <label for="min-area">면적(㎡)</label>
+        <div class="area-inputs">
+          <input id="min-area" type="number" min="0" step="any" inputmode="decimal" placeholder="최소">
+          <span aria-hidden="true">~</span>
+          <input id="max-area" type="number" min="0" step="any" inputmode="decimal" placeholder="최대" aria-label="최대 면적(㎡)">
+        </div>
+      </div>
+    </section>
+
+    <div class="workspace">
+      <section class="map-panel" aria-label="공원 지도">
+        <div id="map"></div>
+      </section>
+      <section class="list-panel" aria-label="공원 목록">
+        <div class="list-head">
+          <h2>공원 목록 <small>머리글을 누르면 정렬 · 행을 누르면 지도 이동</small></h2>
+          <p class="count" aria-live="polite">표시 중인 공원 <strong id="park-count">0</strong>개</p>
+        </div>
+        <div class="table-scroll"><table id="park-list" aria-label="필터 결과 공원"></table></div>
+      </section>
+    </div>
+
+    <p class="note">※ 엑셀 값을 그대로 처리하므로 실제 수치와 다를 수 있습니다. 면적·개원일 값이 없는 공원은 정렬 시 맨 아래에 놓입니다.</p>
+  </main>
+
+  <script type="py" src="main.py" config="pyscript.toml"></script>
+</body>
+</html>
