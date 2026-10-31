@@ -23,7 +23,7 @@ body {
   align-items: baseline;
   justify-content: space-between;
   gap: 8px 24px;
-  padding: 16px 32px;
+  padding: 16px max(32px, calc((100% - 1440px) / 2 + 32px));
   color: #fff;
   background: var(--green-900);
 }
@@ -77,7 +77,8 @@ input:focus-visible, select:focus-visible { outline: 2px solid var(--green-700);
   border-radius: 10px;
   overflow: hidden;
 }
-#map { height: var(--panel-height); }
+.map-panel { height: var(--panel-height); }
+#map { height: 100%; }
 
 .list-panel { display: flex; flex-direction: column; height: var(--panel-height); padding: 14px 16px 0; }
 .list-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 12px; margin-bottom: 10px; }
@@ -107,7 +108,7 @@ input:focus-visible, select:focus-visible { outline: 2px solid var(--green-700);
 
 @media (max-width: 1000px) {
   .workspace { grid-template-columns: 1fr; }
-  #map { height: 420px; }
+  .map-panel { height: 420px; }
   .list-panel { height: 480px; }
 }
 @media (max-width: 600px) {
