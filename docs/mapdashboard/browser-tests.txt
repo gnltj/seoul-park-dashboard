@@ -22,6 +22,6 @@ test_21_list_container_div (browser_checks.run_checks.<locals>.BrowserTests.test
 test_22_event_delegation_after_redraw (browser_checks.run_checks.<locals>.BrowserTests.test_22_event_delegation_after_redraw) ... ok
 
 ----------------------------------------------------------------------
-Ran 22 tests in 0.389s
+Ran 22 tests in 0.316s
 
 OK

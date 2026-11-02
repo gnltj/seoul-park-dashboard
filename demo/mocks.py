@@ -1,7 +1,6 @@
 """테스트용 최소 구현. 실제 Park/ParkManager 또는 실제 공원 데이터가 아니다."""
 
 from dataclasses import dataclass
-from html import escape
 
 
 @dataclass
@@ -16,19 +15,18 @@ class MockPark:
     department: str = "가상 관리부서"
     area_text: str | None = None
     address: str = "시연용 가상 주소"
+    phone: str | None = None
+    facilities: str | None = None
+    plants: str | None = None
+    summary: str | None = None
+    directions: str | None = None
+    notes: str | None = None
+    guide_map: str | None = None
+    image: str | None = None
+    link: str | None = None
 
     def get_location(self):
         return [self.lat, self.lng]
-
-    def get_popup_html(self):
-        # HTML을 제공하는 객체가 원본 텍스트를 escape하는 계약을 시연한다.
-        area = self.area_text if self.area_text else ("정보 없음" if self.area is None else f"{self.area:,} ㎡")
-        return (
-            f"<strong>{escape(self.name)}</strong><br>"
-            f"지역: {escape(self.district)}<br>면적: {escape(area)}<br>"
-            f"개원일: {escape(self.open_date or '정보 없음')}<br>"
-            f"관리부서: {escape(self.department)}<br>주소: {escape(self.address)}"
-        )
 
     def get_sort_value(self, key):
         return getattr(self, key)
@@ -69,7 +67,7 @@ class MockParkManager:
 def sample_parks():
     """가상 공원 6개: 좌표 없음, 면적 없음, 개원일 없음, 실제 0 면적 포함."""
     return [
-        MockPark("demo-1", "가람공원 (가상)", "강남구", 1000, 37.4979, 127.0276, "2000-05-01", "가상 A부서", "1,000 ㎡"),
+        MockPark("demo-1", "가람공원 (가상)", "강남구", 1000, 37.4979, 127.0276, "2000-05-01", "가상 A부서", "1,000 ㎡", phone="02-0000-0000", facilities="산책로 (가상)", guide_map="https://example.com/guide", image="https://example.com/image", link="https://example.com/park"),
         MockPark("demo-2", "나래공원 (가상)", "종로구", 5000, 37.5735, 126.9790, None, "가상 B부서"),
         MockPark("demo-3", "다온공원 (가상)", "마포구", None, 37.5663, 126.9019, "2010-03-01"),
         MockPark("demo-4", "라온공원 (가상)", "종로구", 0, 37.5830, 126.9900, None),

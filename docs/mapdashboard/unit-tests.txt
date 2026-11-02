@@ -1,28 +1,38 @@
-test_blank_bounds_pass_unchanged (test_map_dashboard.DashboardTests.test_blank_bounds_pass_unchanged) ... ok
-test_constructor_only_stores_dependency_and_state (test_map_dashboard.DashboardTests.test_constructor_only_stores_dependency_and_state) ... ok
-test_delegates_same_filtered_list_in_correct_order (test_map_dashboard.DashboardTests.test_delegates_same_filtered_list_in_correct_order) ... ok
-test_empty_results_update_all_views (test_map_dashboard.DashboardTests.test_empty_results_update_all_views) ... ok
-test_header_switch_and_toggle (test_map_dashboard.DashboardTests.test_header_switch_and_toggle) ... ok
-test_invalid_inputs_retain_previous_result (test_map_dashboard.DashboardTests.test_invalid_inputs_retain_previous_result) ... ok
-test_inverted_bounds_and_correction (test_map_dashboard.DashboardTests.test_inverted_bounds_and_correction) ... ok
-test_min_only_and_max_only (test_map_dashboard.DashboardTests.test_min_only_and_max_only) ... ok
-test_missing_and_zero_display_values (test_map_dashboard.DashboardTests.test_missing_and_zero_display_values) ... ok
-test_missing_html_ids_fail_before_leaflet_creation (test_map_dashboard.DashboardTests.test_missing_html_ids_fail_before_leaflet_creation) ... ok
-test_missing_marker_does_not_move_map (test_map_dashboard.DashboardTests.test_missing_marker_does_not_move_map) ... ok
-test_native_bad_input_does_not_become_blank (test_map_dashboard.DashboardTests.test_native_bad_input_does_not_become_blank) ... ok
-test_no_event_is_harmless (test_map_dashboard.DashboardTests.test_no_event_is_harmless) ... ok
-test_numeric_bounds_and_district (test_map_dashboard.DashboardTests.test_numeric_bounds_and_district) ... ok
-test_refresh_requires_start (test_map_dashboard.DashboardTests.test_refresh_requires_start) ... ok
-test_render_then_count_update_order (test_map_dashboard.DashboardTests.test_render_then_count_update_order) ... ok
-test_repeated_row_clicks_reuse_marker (test_map_dashboard.DashboardTests.test_repeated_row_clicks_reuse_marker) ... ok
-test_sort_state_survives_filter_changes (test_map_dashboard.DashboardTests.test_sort_state_survives_filter_changes) ... ok
-test_start_is_idempotent (test_map_dashboard.DashboardTests.test_start_is_idempotent) ... ok
-test_unknown_header_is_ignored (test_map_dashboard.DashboardTests.test_unknown_header_is_ignored) ... ok
-test_uses_manager_output_without_sorting_or_filtering_itself (test_map_dashboard.DashboardTests.test_uses_manager_output_without_sorting_or_filtering_itself) ... ok
-test_valid_and_missing_coordinates (test_map_dashboard.DashboardTests.test_valid_and_missing_coordinates) ... ok
-test_zero_is_not_blank (test_map_dashboard.DashboardTests.test_zero_is_not_blank) ... ok
+test_blank_bounds_are_not_zero (test_dashboard.DashboardTests.test_blank_bounds_are_not_zero) ... ok
+test_constructor_stores_injected_objects (test_dashboard.DashboardTests.test_constructor_stores_injected_objects) ... ok
+test_delegation_and_render_order (test_dashboard.DashboardTests.test_delegation_and_render_order) ... ok
+test_empty_results_reach_both_views (test_dashboard.DashboardTests.test_empty_results_reach_both_views) ... ok
+test_generator_result_is_materialized_for_both_views (test_dashboard.DashboardTests.test_generator_result_is_materialized_for_both_views) ... ok
+test_invalid_filters_keep_existing_views (test_dashboard.DashboardTests.test_invalid_filters_keep_existing_views) ... ok
+test_no_browser_imports_in_controller (test_dashboard.DashboardTests.test_no_browser_imports_in_controller) ... ok
+test_reads_conditions_and_sort_from_views (test_dashboard.DashboardTests.test_reads_conditions_and_sort_from_views) ... ok
+test_refresh_requires_start (test_dashboard.DashboardTests.test_refresh_requires_start) ... ok
+test_row_selection_forwards_exact_park (test_dashboard.DashboardTests.test_row_selection_forwards_exact_park) ... ok
+test_start_fills_options_and_connects_callbacks (test_dashboard.DashboardTests.test_start_fills_options_and_connects_callbacks) ... ok
+test_start_is_idempotent (test_dashboard.DashboardTests.test_start_is_idempotent) ... ok
+test_bad_numbers_rejected (test_views.FilterPanelTests.test_bad_numbers_rejected) ... ok
+test_empty_bounds_preserved (test_views.FilterPanelTests.test_empty_bounds_preserved) ... ok
+test_inverted_bounds_and_recovery (test_views.FilterPanelTests.test_inverted_bounds_and_recovery) ... ok
+test_native_bad_input_is_not_unset_condition (test_views.FilterPanelTests.test_native_bad_input_is_not_unset_condition) ... ok
+test_one_sided_bounds (test_views.FilterPanelTests.test_one_sided_bounds) ... ok
+test_rebinding_changes_handler_without_duplicate_listeners (test_views.FilterPanelTests.test_rebinding_changes_handler_without_duplicate_listeners) ... ok
+test_zero_and_decimal_are_numbers (test_views.FilterPanelTests.test_zero_and_decimal_are_numbers) ... ok
+test_focus_reuses_selected_object_marker (test_views.MapViewTests.test_focus_reuses_selected_object_marker) ... ok
+test_invalid_link_forms_are_blank (test_views.MapViewTests.test_invalid_link_forms_are_blank) ... ok
+test_missing_and_invalid_coordinates (test_views.MapViewTests.test_missing_and_invalid_coordinates) ... ok
+test_missing_location_does_not_move_map (test_views.MapViewTests.test_missing_location_does_not_move_map) ... ok
+test_popup_does_not_require_park_popup_method (test_views.MapViewTests.test_popup_does_not_require_park_popup_method) ... ok
+test_popup_escapes_text (test_views.MapViewTests.test_popup_escapes_text) ... ok
+test_popup_links_are_links_and_http_only (test_views.MapViewTests.test_popup_links_are_links_and_http_only) ... ok
+test_zero_and_regular_coordinates_valid (test_views.MapViewTests.test_zero_and_regular_coordinates_valid) ... ok
+test_default_sort (test_views.ParkListViewTests.test_default_sort) ... ok
+test_missing_and_zero_labels (test_views.ParkListViewTests.test_missing_and_zero_labels) ... ok
+test_same_header_toggles_then_other_starts_ascending (test_views.ParkListViewTests.test_same_header_toggles_then_other_starts_ascending) ... ok
+test_selected_row_delivers_park_not_index (test_views.ParkListViewTests.test_selected_row_delivers_park_not_index) ... ok
+test_sort_state_is_updated_before_callback (test_views.ParkListViewTests.test_sort_state_is_updated_before_callback) ... ok
+test_unknown_header_is_ignored (test_views.ParkListViewTests.test_unknown_header_is_ignored) ... ok
 
 ----------------------------------------------------------------------
-Ran 23 tests in 0.015s
+Ran 33 tests in 0.018s
 
 OK

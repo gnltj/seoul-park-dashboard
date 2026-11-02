@@ -2,13 +2,16 @@
 
 from js import document, window
 
-from map_dashboard import MapDashboard
+from dashboard import Dashboard
+from filter_panel import FilterPanel
+from map_view import MapView
+from park_list_view import ParkListView
 from mocks import MockParkManager, sample_parks
 
 
 try:
     manager = MockParkManager(sample_parks())
-    dashboard = MapDashboard(manager)
+    dashboard = Dashboard(manager, FilterPanel(), MapView(), ParkListView())
     dashboard.start()
     document.getElementById("demo-status").textContent = "준비 완료 · 가상 데이터 6개"
     if window.location.search == "?test=1":
