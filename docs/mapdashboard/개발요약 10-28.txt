@@ -1,0 +1,114 @@
+프로젝트: 내 서울 공원 길라잡이
+원래 문서명: 개발요약 10-28.txt (파일명 유지)
+최종 수정: 2026-11-02
+
+1. 이번 구조 변경
+
+기존 MapDashboard 1개를 수정 계획서에 맞춰 네 클래스로 분리했습니다.
+이 네 클래스가 김건우 담당입니다. 팀의 Park, DataLoader, ParkManager와
+합하면 총 7개 클래스입니다.
+
+  filter_panel.py   / FilterPanel  : 구·면적 입력, 검증, 변경 알림
+  map_view.py       / MapView      : 지도·마커·팝업, 선택 공원 이동
+  park_list_view.py / ParkListView : 목록·개수·정렬 상태·행 선택 알림
+  dashboard.py      / Dashboard    : 객체 연결, 필터/정렬 요청, 갱신 지시
+
+기존 map_dashboard.py는 네 파일로 대체했습니다. 예전 코드는 Git 이력에
+있습니다. 다른 팀원의 실제 데이터 클래스는 구현하거나 수정하지 않았습니다.
+
+2. 실행과 테스트
+
+모든 명령은 저장소 루트(run_demo.py가 있는 폴더)에서 실행합니다.
+Python 3.10 이상과 인터넷 연결이 필요합니다.
+
+  python run_demo.py
+  python run_demo.py --test
+  python run_demo.py --test --port 8768
+  python -m unittest discover -s tests -v
+
+Windows는 루트의 실행.cmd 더블클릭도 가능합니다. 종료는 Ctrl+C입니다.
+HTML을 파일로 직접 열지 말고 서버 주소로 접속하세요.
+기본 URL: http://127.0.0.1:8765/demo/index.html
+브라우저 테스트: URL 끝에 ?test=1 추가
+
+독립 데모는 계속 가상 공원 6개, 초기 마커 5개입니다.
+실제 데이터 처리 코드는 demo/의 Mock과 구분합니다.
+
+2026-11-02 새 구조 검증: 단위 테스트 33개 / 브라우저 테스트 22개 통과.
+기존 23개 결과를 그대로 재사용한 기록이 아닙니다.
+상세: docs/mapdashboard/test-results.md
+
+3. 객체 간 흐름
+
+필터 변경 또는 정렬 머리글 클릭
+  -> Dashboard.refresh()
+  -> FilterPanel.get_values(), ParkListView.get_sort()
+  -> ParkManager.filter(), ParkManager.sort_by()
+  -> MapView.show(), ParkListView.show()
+
+공원 행 클릭
+  -> ParkListView가 실제 Park 객체를 알림 함수에 전달
+  -> Dashboard.on_park_selected(park)
+  -> MapView.focus(park)
+
+Dashboard는 브라우저를 직접 만지지 않습니다. 화면 객체는 Dashboard를
+import하지 않고 등록된 함수를 호출합니다. 정렬 상태와 현재 표시 공원은
+ParkListView가, 마커는 MapView가 관리합니다.
+
+4. 팀 코드 연결
+
+  from filter_panel import FilterPanel
+  from map_view import MapView
+  from park_list_view import ParkListView
+  from dashboard import Dashboard
+
+  dashboard = Dashboard(manager, FilterPanel(), MapView(), ParkListView())
+  dashboard.start()
+
+manager는 팀의 실제 ParkManager 객체입니다. 데이터와 HTML/Leaflet 준비 후
+생성하고 dashboard 객체를 페이지가 살아 있는 동안 보관하세요.
+팀장님의 현재 main.py와 동일한 생성자/모듈 이름입니다.
+
+Manager 계약:
+  get_districts()
+  filter(district, min_area, max_area)
+  sort_by(parks, key, ascending)
+
+정렬 키: name, district, area, open_date, department
+빈 면적 입력은 빈 문자열 "", 실제 0은 숫자 0.0입니다.
+날짜 정렬값 변환과 누락값 정렬 정책은 Park/Manager 담당입니다.
+
+Park 계약:
+  get_location() -> [위도, 경도], 누락 시 None 또는 [None, None]
+  get_sort_value(key) -> Manager가 사용
+
+get_popup_html()은 더 이상 필요하지 않습니다. MapView.make_popup(park)가
+공원 속성으로 HTML을 만듭니다. 전화번호·시설·주소 등 텍스트와
+안내도·이미지·바로가기 링크를 표시하며 팝업 누락값은 빈칸입니다.
+이미지는 직접 삽입하지 않습니다. 긴 내용은 팝업 안에서 스크롤합니다.
+
+5. HTML과 PyScript
+
+  district : select                     (FilterPanel)
+  min-area, max-area : number input      (FilterPanel)
+  map : 높이가 지정된 div               (MapView)
+  park-list : table 또는 div, tbody 불가 (ParkListView)
+  park-count : 숫자 표시 요소           (ParkListView)
+
+ID는 변경하지 않았습니다. Python은 DOM에 접근하는 메인 스레드에서 실행하고
+PyScript 파일 매핑에 filter_panel.py, map_view.py, park_list_view.py,
+dashboard.py 및 팀 데이터 모듈을 등록해야 합니다.
+demo/main.py와 Mock을 팀 실제 코드로 덮어쓰지 마세요.
+
+6. 검증과 남은 일
+
+새 구조의 반복 갱신, 필터, 정렬, 행 선택, 누락값/0개 결과를 검증했습니다.
+별도 임시 폴더에서는 팀원의 실제 코드/HTML/설정을 수정 없이 연결해
+133개 목록·133개 마커, 강남구 7개 필터와 실제 공원 팝업을 확인했습니다.
+팀원 파일은 이 브랜치에 복사해 넣지 않습니다.
+
+최종 팀 브랜치 통합, 모든 기기/브라우저 확인, 데이터 정제 정확성 검토와
+GitHub Pages 최종 배포는 별도로 필요합니다.
+
+관련 문서: docs/mapdashboard/README.md, integration.md, test-results.md
+이 구조 변경본은 feature/map-dashboard 브랜치에서 공유합니다.

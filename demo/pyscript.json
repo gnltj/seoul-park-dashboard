@@ -1,0 +1,11 @@
+{
+  "interpreter": "https://cdn.jsdelivr.net/pyodide/v0.29.0/full/pyodide.mjs",
+  "files": {
+    "../dashboard.py": "./dashboard.py",
+    "../filter_panel.py": "./filter_panel.py",
+    "../map_view.py": "./map_view.py",
+    "../park_list_view.py": "./park_list_view.py",
+    "./mocks.py": "./mocks.py",
+    "../tests/browser_checks.py": "./browser_checks.py"
+  }
+}
